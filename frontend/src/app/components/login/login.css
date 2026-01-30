@@ -1,0 +1,132 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Transparent so global bg shows through */
+  background-color: transparent;
+}
+
+/* Glassmorphism Card Override */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+
+  /* Darker Glass Effect for Readability */
+  background: rgba(10, 10, 25, 0.75) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.5);
+
+  color: white !important;
+  border-radius: 16px !important;
+}
+
+/* Text Colors */
+.mat-mdc-card-title,
+.mat-mdc-card-subtitle {
+  color: white !important;
+  text-align: center;
+}
+
+.mat-mdc-card-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* Form Fields */
+.full-width {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* Override Angular Material Input Styles for Dark Theme */
+::ng-deep .mat-mdc-form-field {
+  width: 100%;
+}
+
+/* Material Overrides - High Contrast Inputs */
+/* Global styles handle input background */
+
+
+/* Global styles handle input text color */
+
+/* Ensure placeholder/label is visible */
+::ng-deep .mat-mdc-form-field-label {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Force ALL label states to be white */
+::ng-deep .mat-mdc-form-field-label,
+::ng-deep .mat-mdc-floating-label {
+  color: #ffffff !important;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+  color: #ffffff !important;
+}
+
+/* Focused State Glow */
+/* Focused State Glow - Keeping shadow but removing border overlap if needed */
+::ng-deep .mat-focused .mat-mdc-text-field-wrapper {
+  box-shadow: 0 0 10px rgba(63, 81, 181, 0.3);
+}
+
+/* Button & Links */
+button[mat-raised-button] {
+  padding: 1.5rem 0;
+  /* Taller buttons */
+  font-size: 1.1rem;
+  background: linear-gradient(45deg, #ff4081, #3f51b5);
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(63, 81, 181, 0.4);
+  transition: all 0.3s ease;
+}
+
+button[mat-raised-button]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(63, 81, 181, 0.6);
+  filter: brightness(1.1);
+}
+
+.test-credentials {
+  margin-top: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.8);
+  border-left: 4px solid #ff4081;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.register-link a {
+  color: #ff4081;
+  /* Neon Pink accent */
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  transition: text-shadow 0.3s ease;
+}
+
+.register-link a:hover {
+  text-shadow: 0 0 8px rgba(255, 64, 129, 0.6);
+}
+
+.error-message {
+  background: rgba(244, 67, 54, 0.2);
+  border: 1px solid #f44336;
+  color: #ffcdd2;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  text-align: center;
+}

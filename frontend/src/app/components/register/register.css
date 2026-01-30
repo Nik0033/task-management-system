@@ -1,0 +1,115 @@
+/* Reuse the same styles as Login for consistency */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: transparent;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 450px;
+    /* Slightly wider for register form */
+    padding: 2rem;
+
+    /* Darker Glass Effect for Readability */
+    background: rgba(10, 10, 25, 0.75) !important;
+    /* Much darker and more opaque */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.5);
+
+    color: white !important;
+    border-radius: 16px !important;
+}
+
+.mat-mdc-card-title {
+    color: white !important;
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.full-width {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+/* Material Overrides - High Contrast Inputs */
+::ng-deep .mat-mdc-text-field-wrapper {
+    background-color: #000000 !important;
+    /* Pure Black Background */
+    border-radius: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+::ng-deep .mat-mdc-input-element {
+    color: #ffffff !important;
+    /* Pure white text */
+    font-weight: 500;
+}
+
+/* Force ALL label states to be white */
+::ng-deep .mat-mdc-form-field-label,
+::ng-deep .mat-mdc-floating-label {
+    color: #ffffff !important;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+    color: #ffffff !important;
+}
+
+::ng-deep .mat-focused .mat-mdc-text-field-wrapper {
+    box-shadow: 0 0 10px rgba(63, 81, 181, 0.5);
+    border: 1px solid rgba(63, 81, 181, 0.5);
+}
+
+button[mat-raised-button] {
+    margin-top: 1rem;
+    padding: 1.5rem 0;
+    font-size: 1.1rem;
+    background: linear-gradient(45deg, #3f51b5, #00d2ff);
+    /* Blue/Cyan gradient for register */
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(63, 81, 181, 0.4);
+    transition: all 0.3s ease;
+}
+
+button[mat-raised-button]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(63, 81, 181, 0.6);
+    filter: brightness(1.1);
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.register-link a {
+    color: #00d2ff;
+    /* Cyan accent */
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 500;
+    transition: text-shadow 0.3s ease;
+}
+
+.register-link a:hover {
+    text-shadow: 0 0 8px rgba(0, 210, 255, 0.6);
+}
+
+.error-message {
+    background: rgba(244, 67, 54, 0.2);
+    border: 1px solid #f44336;
+    color: #ffcdd2;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-align: center;
+}

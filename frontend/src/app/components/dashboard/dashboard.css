@@ -1,0 +1,310 @@
+/* Main Layout */
+.dashboard-container {
+  height: 100vh;
+  background-color: transparent;
+  /* Global background shows through */
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 280px;
+  background: rgba(10, 10, 25, 0.6) !important;
+  /* Semi-transparent dark */
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.sidebar-header {
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo-icon {
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+  color: #00d2ff;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
+}
+
+/* Nav List */
+.mat-mdc-nav-list {
+  padding-top: 1rem;
+}
+
+.mat-mdc-list-item {
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Force internal text and icon colors */
+::ng-deep .mat-mdc-list-item .mdc-list-item__content,
+::ng-deep .mat-mdc-list-item .mdc-list-item__primary-text {
+  color: inherit !important;
+}
+
+::ng-deep .mat-mdc-list-item .mat-icon {
+  color: inherit !important;
+  margin-right: 12px;
+  /* Ensure spacing */
+}
+
+/* User Profile Section (Bottom of Sidebar) */
+.user-profile-section {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff4081, #3f51b5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.details .name {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.details .email {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Main Content Area */
+.mat-sidenav-content {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  background: transparent !important;
+  box-shadow: none !important;
+  /* padding: 0 2rem; */
+  /* Angular toolbar has padding */
+  height: 80px;
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.content-wrapper {
+  padding: 1rem 2rem 2rem 2rem;
+  flex: 1;
+  overflow-y: auto;
+  max-width: 1600px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* Stats Row */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.stats-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px !important;
+  color: white !important;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.stats-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.stats-card mat-card-content {
+  padding: 1.5rem !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.stat-icon {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  font-size: 5rem;
+  width: 5rem;
+  height: 5rem;
+  opacity: 0.05;
+  transform: rotate(15deg);
+}
+
+/* Color accents for stats */
+.stats-card.total .stat-value {
+  color: #ffffff;
+}
+
+.stats-card.pending .stat-value {
+  color: #cfd8dc;
+}
+
+/* Blue Grey */
+.stats-card.progress .stat-value {
+  color: #ffab00;
+}
+
+/* Amber */
+.stats-card.completed .stat-value {
+  color: #00e676;
+}
+
+/* Green */
+
+/* Tasks Grid */
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  padding-bottom: 2rem;
+}
+
+.task-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: white !important;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+}
+
+.task-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Specific Task Styles reuse */
+.mat-mdc-card-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.mat-mdc-card-subtitle {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.status-chip {
+  margin-left: auto;
+}
+
+/* Status Chip Colors - Force Override */
+/* Target the internal label directly to beat MDC specificity */
+::ng-deep .status-chip .mat-mdc-chip .mdc-evolution-chip__text-label {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}
+
+::ng-deep .mat-mdc-chip.status-completed {
+  background-color: rgba(0, 230, 118, 0.3) !important;
+  border: 1px solid #00e676;
+}
+
+::ng-deep .mat-mdc-chip.status-in-progress {
+  background-color: rgba(255, 171, 0, 0.3) !important;
+  border: 1px solid #ffab00;
+}
+
+::ng-deep .mat-mdc-chip.status-pending {
+  background-color: rgba(176, 190, 197, 0.3) !important;
+  border: 1px solid #b0bec5;
+}
+
+/* Empty State */
+.no-tasks {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.empty-icon {
+  font-size: 4rem;
+  width: 4rem;
+  height: 4rem;
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 1rem;
+}
+
+/* Create Button (Toolbar) */
+button[mat-raised-button] {
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  padding: 0 1.5rem;
+}

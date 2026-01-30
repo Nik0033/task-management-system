@@ -1,0 +1,120 @@
+<!-- Main Container with Animation -->
+<mat-sidenav-container class="dashboard-container" @fadeIn>
+
+  <!-- Sidebar Navigation -->
+  <mat-sidenav mode="side" opened class="sidebar">
+    <div class="sidebar-header">
+      <mat-icon class="logo-icon">task_alt</mat-icon>
+      <h2>TaskFlow</h2>
+    </div>
+
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let item of navItems" (click)="setFilter(item.value)"
+        [class.active]="filterStatus === item.value">
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <span matListItemTitle>{{ item.label }}</span>
+      </a>
+    </mat-nav-list>
+
+    <div class="user-profile-section">
+      <div class="user-info">
+        <div class="avatar">{{ user?.name?.charAt(0) }}</div>
+        <div class="details">
+          <span class="name">{{ user?.name }}</span>
+          <span class="email">{{ user?.email }}</span>
+        </div>
+      </div>
+      <button mat-icon-button (click)="logout()" color="warn" matTooltip="Logout">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <!-- Main Content Area -->
+  <mat-sidenav-content>
+
+    <!-- Top Toolbar (Simplified) -->
+    <mat-toolbar color="primary" class="toolbar">
+      <span class="page-title">{{ filterStatus }} Tasks</span>
+      <span class="spacer"></span>
+      <button mat-raised-button color="accent" (click)="openTaskDialog()">
+        <mat-icon>add</mat-icon> New Task
+      </button>
+    </mat-toolbar>
+
+    <div class="content-wrapper">
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <mat-card class="stats-card total">
+          <mat-card-content>
+            <div class="stat-value">{{ totalTasksCount }}</div>
+            <div class="stat-label">Total Tasks</div>
+            <mat-icon class="stat-icon">assignment</mat-icon>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="stats-card pending">
+          <mat-card-content>
+            <div class="stat-value">{{ pendingCount }}</div>
+            <div class="stat-label">Pending</div>
+            <mat-icon class="stat-icon">schedule</mat-icon>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="stats-card progress">
+          <mat-card-content>
+            <div class="stat-value">{{ inProgressCount }}</div>
+            <div class="stat-label">In Progress</div>
+            <mat-icon class="stat-icon">trending_up</mat-icon>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="stats-card completed">
+          <mat-card-content>
+            <div class="stat-value">{{ completedCount }}</div>
+            <div class="stat-label">Completed</div>
+            <mat-icon class="stat-icon">check_circle</mat-icon>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <!-- Tasks Grid -->
+      <div class="tasks-grid" @listAnimation>
+        <mat-card *ngFor="let task of tasks" class="task-card">
+          <mat-card-header>
+            <mat-card-title>{{ task.title }}</mat-card-title>
+            <mat-card-subtitle>Due: {{ task.due_date | date }}</mat-card-subtitle>
+            <div class="status-chip">
+              <mat-chip-set>
+                <mat-chip [class]="'status-' + (task.status.toLowerCase().replace(' ', '-'))" selected>
+                  {{ task.status }}
+                </mat-chip>
+              </mat-chip-set>
+            </div>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p>{{ task.description }}</p>
+          </mat-card-content>
+
+          <mat-card-actions align="end">
+            <button mat-icon-button (click)="openTaskDialog(task)" color="primary" matTooltip="Edit">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteTask(task.id!)" color="warn" matTooltip="Delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+
+        <div *ngIf="tasks.length === 0" class="no-tasks">
+          <mat-icon class="empty-icon">assignment_late</mat-icon>
+          <p>No tasks found in this category.</p>
+          <button mat-button color="primary" (click)="setFilter('All')">View All Tasks</button>
+        </div>
+      </div>
+
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

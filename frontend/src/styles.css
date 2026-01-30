@@ -1,0 +1,132 @@
+/* Global Aura Background */
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animated Mesh Gradient Background */
+body {
+    background-color: #0d0d2b;
+    background-image:
+        radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+        radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%),
+        radial-gradient(at 0% 50%, hsla(339, 49%, 30%, 1) 0, transparent 50%),
+        radial-gradient(at 100% 50%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+        radial-gradient(at 50% 100%, hsla(339, 49%, 30%, 1) 0, transparent 50%),
+        radial-gradient(at 100% 100%, hsla(225, 39%, 30%, 1) 0, transparent 50%);
+    background-size: 200% 200%;
+    animation: gradient-animation 15s ease infinite;
+    color: white;
+    /* Default text color for dark theme */
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Overlay to ensure readability if needed, but mesh is usually enough */
+
+/* GLOBAL INPUT OVERRIDES */
+/* Ensure all inputs are Black with White text */
+input,
+textarea,
+select,
+.mat-mdc-input-element {
+    background-color: transparent !important;
+    backdrop-filter: none;
+    color: #f0f0f0 !important;
+    /* Soft White */
+    caret-color: #00d2ff !important;
+}
+
+/* Fix Browser Autofill Background */
+/* This is tricky because browsers force a yellow/white background. We use a box-shadow inset hack. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #000000 inset !important;
+    /* Solid Black Match */
+    -webkit-text-fill-color: #ffffff !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Angular Material Form Field Specifics */
+/* Text Field Container */
+.mat-mdc-text-field-wrapper {
+    background-color: #000000 !important;
+    /* Solid Black */
+    backdrop-filter: none;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Labels */
+.mat-mdc-form-field-label,
+.mat-mdc-floating-label {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Placeholder */
+::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Global Dialog Styling (Ensure Dark Theme) */
+.mat-mdc-dialog-container .mat-mdc-dialog-surface {
+    background-color: rgba(15, 15, 35, 0.95) !important;
+    /* Dark Theme */
+    backdrop-filter: blur(25px);
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Override Dialog Title Color to Ensure Visibility */
+.mat-mdc-dialog-title {
+    color: white !important;
+}
+
+/* Select Dropdown Overrides */
+.mat-mdc-select-value,
+.mat-mdc-select-arrow {
+    color: #ffffff !important;
+}
+
+/* Dropdown Panel Background */
+.mat-mdc-select-panel {
+    background-color: #1a1a2e !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Option Text & Icons */
+.mat-mdc-option .mdc-list-item__primary-text {
+    color: #ffffff !important;
+}
+
+.mat-mdc-option .mat-icon {
+    color: #ffffff !important;
+    margin-right: 12px;
+}
+
+.mat-mdc-option:hover,
+.mat-mdc-option.mat-mdc-option-active {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
