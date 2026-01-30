@@ -165,9 +165,32 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  prepareTaskPayload(taskData: TaskData): any {
+    const payload: any = { ...taskData };
+
+    // Handle due_date: Convert to YYYY-MM-DD or null
+    if (payload.due_date) {
+      const date = new Date(payload.due_date);
+      if (!isNaN(date.getTime())) {
+        // Format as YYYY-MM-DD manually to preserve local date
+        const year = date.getFullYear();
+        const month = ('0' + (date.getMonth() + 1)).slice(-2);
+        const day = ('0' + date.getDate()).slice(-2);
+        payload.due_date = `${year}-${month}-${day}`;
+      } else {
+        payload.due_date = null;
+      }
+    } else {
+      payload.due_date = null;
+    }
+
+    return payload;
+  }
+
   createTask(taskData: TaskData) {
+    const taskPayload = this.prepareTaskPayload(taskData);
     const newTask = {
-      ...taskData,
+      ...taskPayload,
       user_id: this.user?.id || 0
     };
 
@@ -185,7 +208,7 @@ export class DashboardComponent implements OnInit {
   }
 
   updateTask(taskData: TaskData) {
-    const updatedTask = { ...taskData };
+    const updatedTask = this.prepareTaskPayload(taskData);
     this.apiService.updateTask(taskData.id!, updatedTask).subscribe({
       next: (response: { success: boolean }) => {
         if (response.success) {
